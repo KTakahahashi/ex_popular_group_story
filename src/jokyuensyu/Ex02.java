@@ -1,9 +1,11 @@
+package jokyuensyu;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Ex01 {
+public class Ex02 {
     public static void main(String[] args) {
 
         String url = "jdbc:postgresql://localhost:5432/db";
@@ -16,12 +18,13 @@ public class Ex01 {
 
         try {
             con = DriverManager.getConnection(url, user, password);
-            sql = "insert into members(name,birth_day,gender,color_id) " +
-                    "values('大野 智','1980-11-26','男',1)" +
-                    ",('櫻井 翔','1982-01-25','男',2)" +
-                    " ,('相葉 雅紀','1982-12-24','男',3)" +
-                    " ,('二宮 和也','1983-06-17','男',4)" +
-                    ",('松本 潤','1983-08-30','男',5);";
+            sql = "insert into colors(id,name)"+
+            "values(1,'blue')"+
+            ",(2,'red')"+
+            ",(3,'green')"+
+            ",(4,'yellow')"+
+            ",(5,'purple')"+
+            ",(6,'orange');";
             pstmt = con.prepareStatement(sql);
             int numOfUpdated = pstmt.executeUpdate();
             System.out.println(numOfUpdated + "件のレコードを追加しました");
